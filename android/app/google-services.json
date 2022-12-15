@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "847967007196",
+    "firebase_url": "https://tracknerd-staging-default-rtdb.firebaseio.com",
+    "project_id": "tracknerd-staging",
+    "storage_bucket": "tracknerd-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847967007196:android:aff5f466068f70f2139f19",
+        "android_client_info": {
+          "package_name": "com.tracknerd.lokkate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847967007196-rd4i05qp4tte0kha0ptkis7dem253ho4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2KqrcLPN03pAgKNXL7ZzNBi4rNchChjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847967007196-rd4i05qp4tte0kha0ptkis7dem253ho4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "847967007196-e8oau0q31qibt1ji2kgv0qmeinboa7na.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tracknerd.skkool"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847967007196:android:89cd952e1d40c13f139f19",
+        "android_client_info": {
+          "package_name": "com.tracknerd.lokkate_trip_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847967007196-rd4i05qp4tte0kha0ptkis7dem253ho4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2KqrcLPN03pAgKNXL7ZzNBi4rNchChjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847967007196-rd4i05qp4tte0kha0ptkis7dem253ho4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "847967007196-e8oau0q31qibt1ji2kgv0qmeinboa7na.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tracknerd.skkool"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847967007196:android:f9b94c7f4c910dd5139f19",
+        "android_client_info": {
+          "package_name": "com.tracknerd.skool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847967007196-rd4i05qp4tte0kha0ptkis7dem253ho4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2KqrcLPN03pAgKNXL7ZzNBi4rNchChjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847967007196-rd4i05qp4tte0kha0ptkis7dem253ho4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "847967007196-e8oau0q31qibt1ji2kgv0qmeinboa7na.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tracknerd.skkool"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
