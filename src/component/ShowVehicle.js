@@ -2,7 +2,6 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { getNativeMapName } from "react-native-maps/lib/decorateMapComponent";
 import { getDatabase, onValue, ref, set } from "firebase/database";
 import { FirebaseConfig } from "../screens/Database";
 import Entypo from 'react-native-vector-icons/Entypo'
@@ -10,7 +9,7 @@ import { proportionedPixel } from "./Stylescoponent";
 
 
 
-function ViewVehicle(props) {
+function ShowVechile(props) {
     let long = props.long
     let lat = props.lat
     const navigation = useNavigation();
@@ -93,4 +92,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default ViewVehicle;
+export default ShowVechile;

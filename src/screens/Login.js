@@ -6,95 +6,117 @@ import {
     TouchableOpacity,
     StyleSheet,
     ScrollView,
-    Image
+    Image,
+    Alert,
+
 } from 'react-native';
-import { TextInputComponent } from '../component/TextinpsutComponent';
+import { Textinput } from '../component/TextinpsutComponent';
 import { wp, hp } from '../component/Dimensions';
-import { GetColors } from '../component/Color';
-import Entypo from 'react-native-vector-icons/Entypo';
+import { IconCommonTouchable } from '../component/TouchableIcon';
+
 
 
 
 
 export const Login = ({ navigation }) => {
+    const [email, setEmail] = useState();
+    const [password, setpassword] = useState();
+    const [icon, setIcon] = useState('eye-off');
+    const [hidePassword, setHidePassword] = useState(true);
+
+    const Validate = (email, password) => {
+        console.log('password andar', password)
+        if (email != '' && password != '') {
+            var pass = password;
+            var email = email;
+            console.log('pass', pass)
+            var passRegex = /^([a-z]{9}[@]{1}[0-9]{3})$/
+            var emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            if (!emailRegex.test(email) && !passRegex.test(pass)) {
+                OnSubmit();
+            } else {
+                Alert.alert('Check your credentials')
+            }
+        } else {
+            Alert.alert('Enter the fields')
+        }
+    }
 
 
-    console.log('arrived');
+
+    const onEyeIconPress = () => {
 
 
-    const [text, settext] = useState({
-        username: '',
-        password: '',
-    });
+        icon !== "eye-off"
+            ? (setIcon("eye-off"), setHidePassword(true))
+            : (setIcon("eye"), setHidePassword(false))
+    }
 
-    const { username, password } = text;
+    const OnSubmit = () => {
 
-    const handleOnChangeText = (value, fieldName) => {
-        settext({ ...text, [fieldName]: value });
-    };
+        console.log('arive on login');
+        {
 
-    const onLogin = () => {
-        console.log('arrive on Login');
-
-        var emailpattern =
-            /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-
-        if (emailpattern.test(text.username) === true) {
-            console.log('inputs==>', text.username, text.password)
             axios
                 .post('https://staging-api.tracknerd.io/v1/auth/login', {
-                    username: text.username,
-                    password: text.password,
+                    username: email,
+                    password: password,
                 })
                 .then(function (response) {
-                    console.log('LOGIN response=======>', response);
-                    var result = response.data;
-                    const { message, userId, token } = result;
+                    console.log('responsearrrived');
+                    console.log('responsearrrivedoflogin', response.data);
 
-                    result = { ...result, isLogIn: true, username: text.username };
-                    console.log('result=>', result);
-                    navigation.navigate('Home');
-
+                    navigation.navigate('Home')
                 })
                 .catch(function (error) {
-                    console.log(error);
-                });
-        } else {
-            console.log('not valid');
-            console.warn('invalid input');
+                    console.log('err', error);
+
+                })
         }
+
+
     };
 
     return (
         <ScrollView>
             <View style={Loginstyles.container}>
-                {/* <Text style={Loginstyles.neostoreTxt}>Tracknerd</Text> */}
                 <Image source={require('../Assets/user3.jpeg')} style={{ height: 150, width: 150, alignSelf: 'center', marginVertical: hp('3%') }} />
-                <TextInputComponent
-                    label="Username"
-                    value={username}
-                    // helperText={'yes'}
-                    // img={require('../Assets/user.jpeg')}
-                    onChangeText={value => {
-                        handleOnChangeText(value, 'username');
-                    }}
+                <View style={Loginstyles.TextinputContainer}>
+                    <View style={Loginstyles.TextContainer}>
+                        <Textinput
+                            placeholder='Username'
+                            onChangeText={(text) => setEmail(text)}
 
-                />
+                        />
+                    </View>
+                </View>
 
-                <TextInputComponent
-                    label="Password"
-                    value={password}
 
-                    onChangeText={value => {
-                        handleOnChangeText(value, 'password');
-                    }}
-                    img={require('../Assets/lock.jpg')}
-                />
+                <View style={Loginstyles.TextinputContainer}>
+                    <View style={Loginstyles.TextContainer}>
+                        <Textinput
+
+                            secureTextEntry={hidePassword}
+                            placeholder='Password'
+                            onChangeText={(text) => setpassword(text)}
+
+
+                        />
+
+                        <IconCommonTouchable
+                            name={icon}
+                            type="ionicon"
+                            onPress={onEyeIconPress}
+                            color={'grey'}
+                            size={30}
+                        />
+                    </View>
+                </View>
 
                 <TouchableOpacity
                     onPress={() => {
                         console.log('onlogin press');
-                        onLogin();
+                        Validate(password, email);
                     }}
                     style={Loginstyles.loginBtn}>
                     <Text style={Loginstyles.loginBtnTxt}>Login</Text>
@@ -103,22 +125,27 @@ export const Login = ({ navigation }) => {
 
             </View>
         </ScrollView>
-    );
+    )
 };
 
 const Loginstyles = StyleSheet.create({
     container: {
         height: hp('100%'),
-
         justifyContent: 'center',
         backgroundColor: 'white',
     },
-    neostoreTxt: {
-        fontSize: wp('17%'),
-        fontWeight: '700',
-        alignSelf: 'center',
-        color: 'maroon',
-        marginVertical: hp('5%'),
+    TextContainer: {
+        flexDirection: "row", borderWidth: 1,
+        borderColor: '#00008B',
+        alignItems: "center",
+        width: '80%',
+    },
+    TextinputContainer: {
+        display: 'flex',
+        marginVertical: hp('3%'),
+        flexDirection: 'row',
+        justifyContent: 'center',
+        height: 50
     },
     loginBtn: {
         width: wp('60%'),
@@ -137,11 +164,9 @@ const Loginstyles = StyleSheet.create({
         borderRadius: hp('10%'),
         textAlign: 'center',
     },
-    signupTxt: {
-        fontSize: wp('5%'),
-        marginVertical: wp('2%'),
-        color: 'black',
-        alignSelf: 'center',
-        textAlign: 'center',
-    },
+
 });
+
+
+
+
