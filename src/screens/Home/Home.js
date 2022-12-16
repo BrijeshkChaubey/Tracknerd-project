@@ -3,9 +3,8 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { ScrollView, View, Text, Button, TextInput, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import axios from "axios";
-import ShowVechile from "../component/ShowVehicle";
-import { proportionedPixel } from "../component/Stylescoponent";
-
+import ShowVechile from "../../component/ShowVehicle";
+import { styles } from "./style";
 
 function Home() {
     const [vehiclesOne, setVehiclesOne] = useState([]);
@@ -99,7 +98,7 @@ function Home() {
             {activity ? <ActivityIndicator size="large" color="black" animating={activity} /> :
                 <>
                     <View style={styles.textIPBar}>
-                        <Image source={require('../Assets/search.png')} style={styles.searchIcon} />
+                        <Image source={require('../../Assets/search.png')} style={styles.searchIcon} />
                         <TextInput
                             placeholder="search"
                             style={styles.textIp}
@@ -130,30 +129,5 @@ function Home() {
 }
 
 
-const styles = StyleSheet.create({
-    mainView: {
-        backgroundColor: '#F0F8FF',
-        flex: 1,
-        marginTop: proportionedPixel(10)
-    },
-    textIp: {
-        height: proportionedPixel(20),
-        width: proportionedPixel(150),
-        marginHorizontal: proportionedPixel(5)
-    },
-    textIPBar: {
-        borderWidth: 2,
-        borderRadius: 30,
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginLeft: proportionedPixel(5),
-        marginRight: proportionedPixel(5)
-    },
-    searchIcon: {
-        height: proportionedPixel(13),
-        width: proportionedPixel(13),
-        marginHorizontal: proportionedPixel(5),
-    }
-})
 
 export default Home;

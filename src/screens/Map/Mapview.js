@@ -1,18 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, Image } from 'react-native';
+import { styles } from './style';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-const styles = StyleSheet.create({
-    container: {
-        ...StyleSheet.absoluteFillObject,
-        height: 800,
-        width: 400,
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-    },
-    map: {
-        ...StyleSheet.absoluteFillObject,
-    },
-});
+
 
 export const Mapviews = (props) => {
     console.log('idhar', props.route.params.long)
@@ -35,7 +25,7 @@ export const Mapviews = (props) => {
                         latitude: lat,
                         longitude: long,
                     }}
-                    image={require('../Assets/car5.png',)}
+                    image={require('../../Assets/car5.png')}
                 />
             </MapView>
         </View>

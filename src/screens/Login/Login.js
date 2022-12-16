@@ -10,9 +10,10 @@ import {
     Alert,
 
 } from 'react-native';
-import { Textinput } from '../component/TextinpsutComponent';
-import { wp, hp } from '../component/Dimensions';
-import { IconCommonTouchable } from '../component/TouchableIcon';
+import { Textinput } from '../../component/TextinpsutComponent';
+import { Loginstyles } from './style';
+import { wp, hp } from '../../component/Dimensions';
+import { IconCommonTouchable } from '../../component/TouchableIcon';
 
 
 
@@ -32,7 +33,7 @@ export const Login = ({ navigation }) => {
             console.log('pass', pass)
             var passRegex = /^([a-z]{9}[@]{1}[0-9]{3})$/
             var emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            if (!emailRegex.test(email) && !passRegex.test(pass)) {
+            if (emailRegex.test(email) && passRegex.test(pass)) {
                 OnSubmit();
             } else {
                 Alert.alert('Check your credentials')
@@ -80,7 +81,7 @@ export const Login = ({ navigation }) => {
     return (
         <ScrollView>
             <View style={Loginstyles.container}>
-                <Image source={require('../Assets/user3.jpeg')} style={{ height: 150, width: 150, alignSelf: 'center', marginVertical: hp('3%') }} />
+                <Image source={require('../../Assets/user3.jpeg')} style={{ height: 150, width: 150, alignSelf: 'center', marginVertical: hp('3%') }} />
                 <View style={Loginstyles.TextinputContainer}>
                     <View style={Loginstyles.TextContainer}>
                         <Textinput
@@ -116,7 +117,7 @@ export const Login = ({ navigation }) => {
                 <TouchableOpacity
                     onPress={() => {
                         console.log('onlogin press');
-                        Validate(password, email);
+                        Validate(email, password);
                     }}
                     style={Loginstyles.loginBtn}>
                     <Text style={Loginstyles.loginBtnTxt}>Login</Text>
@@ -128,44 +129,6 @@ export const Login = ({ navigation }) => {
     )
 };
 
-const Loginstyles = StyleSheet.create({
-    container: {
-        height: hp('100%'),
-        justifyContent: 'center',
-        backgroundColor: 'white',
-    },
-    TextContainer: {
-        flexDirection: "row", borderWidth: 1,
-        borderColor: '#00008B',
-        alignItems: "center",
-        width: '80%',
-    },
-    TextinputContainer: {
-        display: 'flex',
-        marginVertical: hp('3%'),
-        flexDirection: 'row',
-        justifyContent: 'center',
-        height: 50
-    },
-    loginBtn: {
-        width: wp('60%'),
-        height: hp('8%'),
-        paddingVertical: hp('1%'),
-        paddingHorizontal: hp('1%'),
-        backgroundColor: '#4169E1',
-        marginTop: hp('7%'),
-        alignSelf: 'center',
-        borderRadius: wp('4%'),
-    },
-    loginBtnTxt: {
-        fontSize: wp('6%'),
-        padding: wp('1%'),
-        color: 'white',
-        borderRadius: hp('10%'),
-        textAlign: 'center',
-    },
-
-});
 
 
 

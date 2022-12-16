@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { getDatabase, onValue, ref, set } from "firebase/database";
-import { FirebaseConfig } from "../screens/Database";
+import { FirebaseConfig } from "../firebas/Database";
 import Entypo from 'react-native-vector-icons/Entypo'
 import { proportionedPixel } from "./Stylescoponent";
 
